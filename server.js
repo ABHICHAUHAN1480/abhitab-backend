@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-
+require('dotenv').config();
 const app = express();
 const PORT = 3000;
 
@@ -11,7 +11,7 @@ app.use(cors());
 
 
 mongoose
-  .connect("mongodb+srv://abhishekchauhan9717:cLIqQexS0j8y5LjY@cluster0.lpm71.mongodb.net/ABHI_TAB?retryWrites=true&w=majority")
+  .connect(process.env.MONGO_URI)
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error("Failed to connect to MongoDB", err));
 
